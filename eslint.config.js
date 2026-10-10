@@ -15,6 +15,21 @@ export default await antfu(
     ],
   },
   {
+    files: ['pnpm-workspace.yaml'],
+    rules: {
+      // Keep dependency trust policy separate from formatting rules.
+      'pnpm/yaml-enforce-settings': 'off',
+    },
+  },
+  {
+    files: ['**/*.js'],
+    rules: {
+      // The unused-imports rule misclassifies references in JavaScript with ESLint 10.
+      'unused-imports/no-unused-vars': 'off',
+      'no-unused-vars': 'error',
+    },
+  },
+  {
     files: ['**/*.md/*.*'],
     rules: {
       'ts/no-this-alias': 'off',

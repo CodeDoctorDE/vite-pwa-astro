@@ -45,6 +45,8 @@ Zero-config PWA Integration for Astro
 
 ## 📦 Install
 
+> This fork requires **Node.js 22.12.0 or above**, **Astro 7**, and **vite-plugin-pwa 2**.
+
 > From v0.2.0, `@vite-pwa/astro` requires **Vite 5** and **Astro 4.0.0 or above**.
 
 > Using any version older than v0.2.0 requires Vite 3.1.0+.

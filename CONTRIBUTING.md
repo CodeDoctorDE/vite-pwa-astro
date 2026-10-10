@@ -13,7 +13,7 @@ To develop and test the `@vite-pwa/astro` package:
 
 2. Ensure using the latest Node.js (^14.18.0 || >=16.12.0)
 
-3. `@vite-pwa/astro` uses pnpm v7. If you are working on multiple projects with different versions of pnpm, it's recommend to enable [Corepack](https://github.com/nodejs/corepack) by running `corepack enable`.
+3. `@vite-pwa/astro` uses pnpm v12. If you are working on multiple projects with different versions of pnpm, it's recommend to enable [Corepack](https://github.com/nodejs/corepack) by running `corepack enable`.
 
 4. Check out a branch where you can work and commit your changes:
 ```shell
@@ -27,3 +27,5 @@ git checkout -b my-new-branch
 ## Testing changes
 
 From the terminal, change to one of the examples folder and run `pnpm run build && pnpm run preview`.
+
+The build and lint tools currently require TypeScript 5.9. Keep the compiler on this version until unbuild and typescript-eslint support the newer compiler API.

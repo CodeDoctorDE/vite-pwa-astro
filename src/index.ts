@@ -65,8 +65,7 @@ export default function (options: PwaOptions = {}): AstroIntegration {
           plugins = plugins.filter(p => 'name' in p && p.name !== 'vite-plugin-pwa:dev-sw')
           plugins.push({
             name: 'vite-pwa:astro:build:plugin',
-            // @ts-expect-error using Vite 5, env. api missing
-            applyToEnvironment(env: any) {
+            applyToEnvironment(env) {
               return env.name === 'client'
             },
             configResolved(resolvedConfig) {
@@ -82,7 +81,11 @@ export default function (options: PwaOptions = {}): AstroIntegration {
                 if (pwaAssetsGenerator) {
                   pwaAssetsGenerator.injectManifestIcons()
                 }
-                api.generateBundle(bundle, this)
+                // Vite 8 uses Rolldown; the PWA API still declares Rollup types.
+                api.generateBundle(
+                  bundle as unknown as Parameters<typeof api.generateBundle>[0],
+                  this as unknown as Parameters<typeof api.generateBundle>[1],
+                )
               }
             },
             closeBundle: {
@@ -100,7 +103,6 @@ export default function (options: PwaOptions = {}): AstroIntegration {
 
         updateConfig({
           vite: {
-            // @ts-expect-error TS2322: Type Plugin<any>[] is not assignable to type DeepPartial<PluginOption[] | undefined
             plugins,
           },
         })

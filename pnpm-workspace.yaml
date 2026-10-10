@@ -1,6 +1,6 @@
 packages:
   - examples/*
-ignoredBuiltDependencies:
-  - esbuild
-onlyBuiltDependencies:
-  - sharp
+
+allowBuilds:
+  esbuild: true
+  sharp: true
